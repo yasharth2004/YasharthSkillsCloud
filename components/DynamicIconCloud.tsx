@@ -137,37 +137,68 @@ const renderedIcons: React.ReactFragment = icons.map((icon) => (
   </a>
 ));
 
+const preloadIconImages = (items: SkillIcon[]) =>
+  Promise.allSettled(
+    items.map(
+      (icon) =>
+        new Promise<void>((resolve) => {
+          const image = new Image();
+          image.onload = () => resolve();
+          image.onerror = () => resolve();
+          image.src = icon.src;
+        })
+    )
+  );
+
 export default function DynamicIconCloud() {
+  const [isReady, setIsReady] = React.useState(false);
+
+  React.useEffect(() => {
+    let isMounted = true;
+
+    preloadIconImages(icons).then(() => {
+      if (isMounted) {
+        setIsReady(true);
+      }
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <div className="h-[min(88vw,620px)] w-full flex justify-center items-center">
-      <Cloud
-        canvasProps={{
-          style: {
-            width: "min(88vw, 620px)",
-            height: "min(88vw, 620px)",
-            display: "block",
-          },
-        }}
-        options={{
-          reverse: true,
-          depth: 0.8,
-          wheelZoom: false,
-          pinchZoom: false,
-          imageScale: 2.5,
-          activeCursor: "grab",
-          tooltip: "native",
-          initial: [0.1, 0],
-          clickToFront: 500,
-          tooltipDelay: 0,
-          outlineColour: "transparent",
-          maxSpeed: 0.02,
-          minSpeed: 0.01,
-          shuffleTags: true,
-          lock: "y",
-        }}
-      >
-        {renderedIcons}
-      </Cloud>
+      {isReady ? (
+        <Cloud
+          canvasProps={{
+            style: {
+              width: "min(88vw, 620px)",
+              height: "min(88vw, 620px)",
+              display: "block",
+            },
+          }}
+          options={{
+            reverse: true,
+            depth: 0.8,
+            wheelZoom: false,
+            pinchZoom: false,
+            imageScale: 2.5,
+            activeCursor: "grab",
+            tooltip: "native",
+            initial: [0.1, 0],
+            clickToFront: 500,
+            tooltipDelay: 0,
+            outlineColour: "transparent",
+            maxSpeed: 0.02,
+            minSpeed: 0.01,
+            shuffleTags: true,
+            lock: "y",
+          }}
+        >
+          {renderedIcons}
+        </Cloud>
+      ) : null}
     </div>
   );
 }
