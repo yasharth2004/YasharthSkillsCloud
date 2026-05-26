@@ -124,8 +124,15 @@ export default function DynamicIconCloud() {
   const icons = useIcons(slugs);
 
   return (
-    <div className="h-[500px] w-full flex justify-center items-center">
+    <div className="h-[min(88vw,620px)] w-full flex justify-center items-center">
       <Cloud
+        canvasProps={{
+          style: {
+            width: "min(88vw, 620px)",
+            height: "min(88vw, 620px)",
+            display: "block",
+          },
+        }}
         options={{
           reverse: true,
           depth: 0.8,
