@@ -116,6 +116,8 @@ const slugs = [
   "firebase",
   "github",
   "gitlab",
+  "vscode",
+  "pycharm"
 ];
 
 export default function DynamicIconCloud() {
