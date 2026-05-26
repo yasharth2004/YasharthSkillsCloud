@@ -63,15 +63,22 @@ const slugs = [
   "tailwindcss",
   "bootstrap",
   "nextdotjs",
+  "redux",
+  "react",
 
   // Backend
   "nodedotjs",
   "express",
   "django",
   "flask",
+  "fastapi",
+  "graphql",
   "laravel",
   "springboot",
   "dotnet",
+  "openapiinitiative", // REST API
+  "openid", // OAuth
+  "jsonwebtokens", // JWT
 
   // Databases
   "postgresql",
@@ -79,11 +86,13 @@ const slugs = [
   "mysql",
   "redis",
   "sqlite",
+  "supabase",
 
   // DevOps / tools
   "docker",
   "kubernetes",
   "git",
+  "githubactions",
   "linux",
   "visualstudiocode",
   "visualstudio",
@@ -91,6 +100,7 @@ const slugs = [
   "figma",
   "npm",
   "yarn",
+  "vercel",
 
   // Cloud
   "amazonaws",
@@ -103,6 +113,11 @@ const slugs = [
   "scikitlearn",
   "huggingface",
   "opencv",
+  "pandas",
+  "numpy",
+  "matplotlib",
+  "jupyter",
+  "langchain",
 
   // Web tooling
   "vite",
@@ -117,7 +132,8 @@ const slugs = [
   "github",
   "gitlab",
   "vscode",
-  "pycharm"
+  "pycharm",
+  "flutter",
 ];
 
 export default function DynamicIconCloud() {
