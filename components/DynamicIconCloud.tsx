@@ -56,7 +56,7 @@ const slugs = [
   // Frontend
   "html5",
   "css",
-  "react",
+  "react", // React / React Native
   "vuedotjs",
   "angular",
   "svelte",
@@ -64,7 +64,6 @@ const slugs = [
   "bootstrap",
   "nextdotjs",
   "redux",
-  "react",
 
   // Backend
   "nodedotjs",
